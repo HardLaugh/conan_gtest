@@ -32,7 +32,7 @@ class GTestConan(conan_build_helper.CMakePackage):
     homepage = "https://github.com/google/googletest"
     repo_url = "https://github.com/google/googletest.git"
     version = get_version("stable")
-    commit = "main"
+    commit = "0a3a3a845e136a9a6ccd8e9b924b848840f22b7b"
     patch_version = "1.10.0"
     license = "BSD-3-Clause"
     topics = ("conan", "gtest", "testing", "google-testing", "unit-test")
@@ -137,7 +137,7 @@ class GTestConan(conan_build_helper.CMakePackage):
         #tools.get(**self.conan_data["sources"][self.version])
         #extracted_dir = "googletest-release-" + self.version
         #os.rename(extracted_dir, self._source_subfolder)
-        self.run('git clone -b {} --progress --depth 100 --recursive --recurse-submodules {} {}'.format("main", self.repo_url, self._source_subfolder))
+        self.run('git clone -b {} --progress --recursive --recurse-submodules {} {}'.format("main", self.repo_url, self._source_subfolder))
         with tools.chdir(self._source_subfolder):
           if self.commit:
             self.run('git checkout {}'.format(self.commit))
@@ -179,7 +179,7 @@ class GTestConan(conan_build_helper.CMakePackage):
         with tools.vcvars(self.settings, only_diff=False): # https://github.com/conan-io/conan/issues/6577
             #for patch in self.conan_data["patches"][self.patch_version]:
             #    tools.patch(**patch)
-            # tools.patch(patch_file = "patches/gtest-1.10.0.patch", base_path = self._source_subfolder)
+            tools.patch(patch_file = "patches/gtest-1.10.0.patch", base_path = self._source_subfolder)
             cmake = self._configure_cmake()
             cmake.build()
             cmake.install()
