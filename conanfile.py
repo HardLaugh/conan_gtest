@@ -179,7 +179,7 @@ class GTestConan(conan_build_helper.CMakePackage):
         with tools.vcvars(self.settings, only_diff=False): # https://github.com/conan-io/conan/issues/6577
             #for patch in self.conan_data["patches"][self.patch_version]:
             #    tools.patch(**patch)
-            tools.patch(patch_file = "patches/gtest-1.10.0.patch", base_path = self._source_subfolder)
+            # tools.patch(patch_file = "patches/gtest-1.10.0.patch", base_path = self._source_subfolder)
             cmake = self._configure_cmake()
             cmake.build()
             cmake.install()
