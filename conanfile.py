@@ -32,7 +32,7 @@ class GTestConan(conan_build_helper.CMakePackage):
     homepage = "https://github.com/google/googletest"
     repo_url = "https://github.com/google/googletest.git"
     version = get_version("stable")
-    commit = "0a3a3a845e136a9a6ccd8e9b924b848840f22b7b"
+    commit = "main"
     patch_version = "1.10.0"
     license = "BSD-3-Clause"
     topics = ("conan", "gtest", "testing", "google-testing", "unit-test")
